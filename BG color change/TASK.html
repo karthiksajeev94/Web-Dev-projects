@@ -1,0 +1,131 @@
+<html>
+<head>
+<title>
+TASK
+</title>
+
+<link rel='stylesheet' href='task4_style.css' type='text/css'>
+
+<script>
+var opt_select;
+var opt_remove;
+var bkground;
+
+function f1()
+{
+var text=document.getElementById('dd_menu');
+text.style.color='lime';
+var drop=document.getElementById('drop');
+drop.style.visibility='visible';
+}
+
+function f2()
+{
+var text=document.getElementById('dd_menu');
+text.style.color='white';
+drop.style.visibility='hidden';
+}
+
+function f3(opt_select)
+{
+var opt=document.getElementById(opt_select);
+switch(opt_select)
+{
+case 'c1': opt.bgColor='red';break;
+case 'c2': opt.bgColor='blue';break;
+case 'c3': opt.bgColor='green';break;
+case 'c4': opt.bgColor='orange'; opt.style.color='red';break;
+case 'c5': opt.bgColor='yellow'; opt.style.color='red';break;
+case 'c6': opt.bgColor='purple';break;
+case 'c7': opt.bgColor='black';break;
+case 'c8': opt.bgColor='white';  opt.style.color='black';break;
+}
+}
+
+function f4(opt_remove)
+{
+var opt=document.getElementById(opt_remove);
+switch(opt_remove)
+{
+case 'c1': 
+case 'c2': 
+case 'c3': 
+case 'c4': 
+case 'c5': 
+case 'c6': 
+case 'c7': 
+case 'c8': opt.bgColor='transparent';opt.style.color='yellow';break;
+}
+}
+
+function f5(bkground)
+{
+document.body.style.backgroundImage='none';
+var drop=document.getElementById('drop');
+switch(bkground)
+{
+case 'c1': document.bgColor='red';drop.style.border='2px solid black';break;
+case 'c2': document.bgColor='blue';drop.style.border='2px solid black';break;
+case 'c3': document.bgColor='green';drop.style.border='2px solid black';break; 
+case 'c4': document.bgColor='orange';drop.style.border='2px solid black';break; 
+case 'c5': document.bgColor='yellow';drop.style.border='2px solid black';break; 
+case 'c6': document.bgColor='purple';drop.style.border='2px solid black';break; 
+case 'c7': document.bgColor='black';drop.style.border='2px solid white';break; 
+case 'c8': document.bgColor='white';drop.style.border='2px solid black';break;
+}
+}
+</script>
+</head>
+
+<body>
+
+<div id='dd_menu' onmouseover='f1();' onmouseout='f2();'>
+<br>
+Change Background Colour
+</div>
+
+<table id='drop' onmouseover='f1();' onmouseout='f2();'>
+<tr>
+<td id='c1' onmouseover='f3("c1");' onmouseout='f4("c1");' onclick='f5("c1");'>
+Red
+</td>
+</tr>
+<tr>
+<td id='c2' onmouseover='f3("c2");' onmouseout='f4("c2");' onclick='f5("c2");'>
+Blue
+</td>
+</tr>
+<tr>
+<td id='c3' onmouseover='f3("c3");' onmouseout='f4("c3");' onclick='f5("c3");'>
+Green
+</td>
+</tr>
+<tr>
+<td id='c4' onmouseover='f3("c4");' onmouseout='f4("c4");' onclick='f5("c4");'>
+Orange
+</td>
+</tr>
+<tr>
+<td id='c5' onmouseover='f3("c5");' onmouseout='f4("c5");' onclick='f5("c5");'>
+Yellow
+</td>
+</tr>
+<tr>
+<td id='c6' onmouseover='f3("c6");' onmouseout='f4("c6");' onclick='f5("c6");'>
+Violet
+</td>
+</tr>
+<tr>
+<td id='c7' onmouseover='f3("c7");' onmouseout='f4("c7");' onclick='f5("c7");'>
+Black
+</td>
+</tr>
+<tr>
+<td id='c8' onmouseover='f3("c8");' onmouseout='f4("c8");' onclick='f5("c8");'>
+White
+</td>
+</tr>
+</table>
+
+</body>
+</html>

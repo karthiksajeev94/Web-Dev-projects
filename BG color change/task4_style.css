@@ -1,0 +1,4 @@
+body {background-image:url('69.jpg');}
+#dd_menu {position:absolute; left:500px; top:40px; width:300px; height:85px; border:4px double orange; text-align:center; font-size:26px; font-family:narkisim; background-image:url('77.jpg'); color:white;}
+#drop {visibility:hidden; width:306px; height:360px; border-collapse:collapse; position:absolute; left:501px; top:133px; text-align:center; background-image:url('65.jpg'); color:yellow; font-size:21px; font-family:comic sans ms; border:2px solid black;}
+#drop td {height:45px;}

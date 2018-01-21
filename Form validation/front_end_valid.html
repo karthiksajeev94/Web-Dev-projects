@@ -1,0 +1,680 @@
+<html>
+
+<head>
+
+<title>
+FORM
+</title>
+
+<style>
+
+span {color:yellow; font-size:15px;}
+
+fieldset {background-image:url("8.jpg"); color:white; width:600px; position:absolute; 
+          left:350px; font-family:arial; font-size:18px; border:2px solid black;}
+body {background-image:url("4.jpg")}
+h1 {color:yellow; font-family:harrington; text-align:center; font-size:45px;}
+#s {width:150px; background-color:lime; color:navy; height:40px;
+    position:relative; left:155px;}
+#reset {width:150px; background-color:red; color:yellow; height:40px; 
+        position:relative; left:150px;}
+textarea {width:300px; height:100px; position:relative; left:100px;}
+td {width:200px; height:30px; color:white; font-family:arial; font-size:18px;}
+.legend {text-align:right; padding-right:30px; font-size:18px; width:175px;}
+.i {width:200px;}
+.dob {color:#aaaaaa;}
+#d {width:40px;}
+#m {width:90px;}
+#y {width:60px;}
+.mesg {padding-left:10px; color:yellow; font-size:15px;}
+#upload {width:280px;}
+#club {position:relative; left:20px;}
+#add {position:relative; left:20px;}
+#success {color:yellow; font-size:26px; text-align:center;}
+
+</style>
+
+<script>
+
+var i=0;
+
+var k=0;
+function f()
+
+{
+var b=0;
+
+var f=0;
+var q=0;
+var n=document.getElementById('n');
+
+var r=document.getElementById('r');
+
+var e=document.getElementById('e');
+
+var p=document.getElementById('p');
+
+var c=document.getElementById('c');
+var u=document.getElementById('u');
+
+var suc=document.getElementById('success');
+
+
+var club=0;
+var upload=document.form.upload.value;
+var d=document.form.d.value;
+var m=document.form.m.value;
+var y=document.form.y.value;
+var err=document.getElementById('error');
+
+
+
+
+
+if(document.form.name.value=='')
+
+{
+n.innerHTML="Enter Name!!";
+
+b=1;
+}
+else
+
+{
+
+var nam=document.form.name.value;
+if(nam.match(/^[a-zA-Z]+(\.*[ ][a-zA-Z]+)*\.?$/))
+{
+if((document.form.name.value[0]<'A')||(document.form.name.value[0]>'Z'))
+
+{
+n.innerHTML="First character must be in Uppercase";
+
+b=1;
+}
+else
+n.innerHTML="";
+}
+else
+{
+n.innerHTML="Invalid Name!!";
+b=1;
+}
+}
+
+
+
+for(var i=0;i<d.length;i++)
+{
+if(isNaN(d.charAt(i)))
+f=1;
+}
+for(i=0;i<y.length;i++)
+{
+if(isNaN(y.charAt(i)))
+f=1;
+}
+
+if(f==0)			//all entries are numbers
+{
+if((d>0)&&(d<32)&&(y>1900)&&(y<2010)&&(m!=''))
+{
+if((d==31)&&((m==4)||(m==6)||(m==9)||(m==11)))
+f=1;
+else if((m==2)&&(d>28)&&(y%4!=0))		//normal year
+f=1;
+else if((m==2)&&(d>29)&&(y%4==0))		//leap year
+f=1;
+}
+else
+f=1;
+}
+if(f==1)
+{
+err.innerHTML="Invalid date!!";
+b=1;
+}
+else
+err.innerHTML="";
+
+
+if(document.form.rno.value=='')
+
+{
+r.innerHTML="Enter Roll No.!!";
+
+b=1;
+}
+else
+
+{
+
+if(document.form.rno.value.length!=10)
+
+{
+r.innerHTML="Roll No. must be 10 digits long";
+
+b=1;
+}
+else
+
+{
+for(i=0;i<10;i++)
+if(isNaN(document.form.rno.value[i]))
+{
+r.innerHTML="Roll No. must contain digits only!!";
+b=1;
+break;
+}
+else
+r.innerHTML="";
+
+}
+}
+
+
+
+if(document.form.eid.value=='')
+
+{
+e.innerHTML="Enter Email Id!!";
+
+b=1;
+}
+else
+
+{
+var str=document.form.eid.value;
+if(str.match(/^[a-zA-Z0-9-_]+(\.[a-zA-Z0-9-_]+)*@([a-zA-Z0-9-]+)(\.[a-zA-Z0-9-]+)*(\.[a-z]{2,4})$/))
+e.innerHTML="";
+else
+{
+e.innerHTML="Invalid Email Id!!"
+b=1;
+}
+}
+
+
+if(document.form.pwd.value=='')
+
+{
+p.innerHTML="Enter Password!!";
+
+b=1;
+q=1;
+}
+else
+
+{
+
+if((document.form.pwd.value.length<5))
+
+{
+p.innerHTML="Password too short";
+
+b=1;
+q=1;
+}
+else if(document.form.pwd.value.length>9)
+
+{
+p.innerHTML="Password too long";
+
+b=1;
+q=1;
+}
+else
+{
+var pass=document.form.pwd.value;
+
+for(i=0;i<pass.length;i++)
+{
+x=pass.charCodeAt(i);
+if(!(((x>47)&&(x<58))||((x>64)&&(x<91))||((x>96)&&(x<123))||(x==95)))
+q=1;
+}
+
+if(q==1)
+
+{
+p.innerHTML="Password must contain only digits, alphabets and underscores!";
+b=1;
+}
+else
+p.innerHTML="Good!";
+}
+
+
+}
+
+
+
+
+if(document.form.cpwd.value=='')
+
+{
+if(q==0)
+{
+c.innerHTML="Enter Password again!!";
+
+b=1;
+}
+else
+c.innerHTML="";
+}
+else
+
+{
+var confirm=document.form.cpwd.value;
+var pass=document.form.pwd.value;
+
+if(q==0)
+{
+if(confirm==pass)
+c.innerHTML="A Match!";
+
+else
+{
+c.innerHTML="Passwords don't match!";
+b=1;
+}
+}
+else
+c.innerHTML="";
+
+}
+
+
+if(i<3)
+
+{
+member.innerHTML="Select atleast three clubs!!";
+
+b=1;
+}
+if(document.form.band.checked==true)
+club++;
+if(document.form.hit.checked==true)
+club++;
+if(document.form.web.checked==true)
+club++;
+if(document.form.bot.checked==true)
+club++;
+if(document.form.aero.checked==true)
+club++;
+if(document.form.word.checked==true)
+club++;
+if(document.form.hack.checked==true)
+club++;
+if(document.form.stam.checked==true)
+club++;
+if(document.form.how.checked==true)
+club++;
+if(document.form.alum.checked==true)
+club++;
+
+if(club<3)
+{
+member.innerHTML="Select atleast three clubs!!";
+b=1;
+}
+else
+member.innerHTML="";
+
+
+if(upload.match(/(.jpg|.png)$/))
+u.innerHTML="";
+
+else if(upload=='')
+u.innerHTML="";
+
+else
+{
+u.innerHTML="File must be of .jpg or .png type!";
+
+b=1;
+}
+
+if(b==0)
+{
+suc.innerHTML="Form Successfully validated!";
+}
+}
+
+
+function date()
+{
+document.form.d.value='';
+document.form.d.style.color='black';
+}
+
+function month()
+{
+document.form.m.style.color='black';
+}
+
+function year()
+{
+document.form.y.value='';
+document.form.y.style.color='black';
+}
+
+function address()
+{
+if(k==0)
+{
+document.form.a.value='';
+document.form.a.style.color='black';
+}
+k=1;
+}
+
+
+</script>
+
+</head>
+
+
+<body>
+<fieldset>
+<form name='form'>
+
+<h1>CREATE AN ACCOUNT</h1>
+<br>
+<div id='success'></div>
+<br>
+<table>
+<tr>
+<td class='legend'>
+Name* :
+</td>
+<td>
+<input type='text' name='name' class='i'> 
+</td>
+<td>
+<span id='n'></span>
+</td>
+</tr>
+<tr>
+<td class='legend'>
+D.O.B* :
+</td>
+<td>
+<input type='text' name='d' class='dob' id='d' value='dd' maxlength=2 onclick=date()>
+<select class='dob' name='m' id='m' onclick=month()>
+<option value=''>month</option>
+<option value='1'>January</option>
+<option value='2'>February</option>
+<option value='3'>March</option>
+<option value='4'>April</option>
+<option value='5'>May</option>
+<option value='6'>June</option>
+<option value='7'>July</option>
+<option value='8'>August</option>
+<option value='9'>September</option>
+<option value='10'>October</option>
+<option value='11'>November</option>
+<option value='12'>December</option>
+</select>
+<input type='text' name='y' class='dob' id='y' value='yyyy' maxlength=4 onclick=year()>
+
+</td>
+<td class='mesg' id='error'>
+</td>
+</tr>
+<tr>
+<td class='legend'>
+
+Gender :
+</td>
+<td>
+
+&nbsp;&nbsp;
+<input type='radio' name='g'> Male
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='radio' name='g'> Female
+
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td class='legend'>
+
+Roll No* :
+</td>
+<td>
+<input type='text' name='rno' class='i'>
+
+</td>
+<td>
+<span id='r'></span>
+
+</td>
+</tr>
+
+<tr>
+<td class='legend'>
+Department :
+
+</td>
+<td>
+<select>
+
+<option>Architecture</option>
+<option>Chemical</option>
+
+<option>Civil</option>
+
+<option selected>Computer Science</option>
+
+<option>Electronics & Communication</option>
+
+<option>Electrical and Electronics</option>
+
+<option>Instrumentation & Control</option>
+
+<option>Mechanical</option>
+
+<option>Metallurgy</option>
+
+<option>Production</option>
+
+
+</select>
+
+</td>
+<td>
+</td>
+
+</tr>
+<tr>
+<td class='legend'>
+Email Id* :
+</td>
+<td>
+<input type='text' name='eid' class='i'>
+
+</td>
+<td>
+<span id='e'></span>
+
+</td>
+</tr>
+</table>
+
+<br>
+<table id='club'>
+<tr>
+<td colspan=3>
+Club Membership (atleast three):
+
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan=2>
+<span id='member'></span>
+
+</td>
+</tr>
+<tr>
+<td>
+
+<input type='checkbox' name='aero'> Aero-modelling 
+</td>
+
+<td>
+<input type='checkbox' name='alum'> Alumni Association
+</td>
+<td>
+
+<input type='checkbox' name='band'> Bandsters 
+</td>
+</tr>
+<tr>
+<td>
+
+<input type='checkbox' name='hack'> HackIt!! 
+</td>
+<td>
+<input type='checkbox' name='hit'> HitDFloor
+</td>
+<td>
+
+<input type='checkbox' name='bot'> HotBot 
+</td>
+</tr>
+<tr>
+<td>
+<input type='checkbox' name='how'> Howzatt! 
+</td>
+<td>
+<input type='checkbox' name='stam'> Staminator 
+</td>
+<td>
+<input type='checkbox' name='web'> Websters 
+</td>
+</tr>
+<tr>
+<td colspan=3>
+<input type='checkbox' name='word'> Wordsworth 
+</td>
+</tr>
+</table>
+
+<br>
+<div id='add'>
+Residential Address: 
+<br><br>
+<textarea size='600px' name='a' class='dob' onclick='address()'>
+Enter Address here </textarea>
+</div>
+<br>
+<table>
+<tr>
+<td rowspan=2 class='legend'>
+Last School Attended* :
+
+</td>
+<td colspan=2>
+</td>
+</tr>
+<tr>
+<td colspan=2>
+<select name='lsa'>
+
+<option>DPS, R.K. Puram, New Delhi</option>
+
+<option>Sishya School, Adyar, Chennai</option>
+
+<option>The Riverside School, Ahmedabad, Ahmedabad</option>
+
+<option>Vidyaranya High School, Hyderabad</option>
+
+<option>Springdales School, Dhaula Kuan, Delhi</option>
+
+<option>Centre For Learning, Bengaluru</option>
+
+<option>Sanskriti School, Chanakyapuri, Delhi</option>
+
+<option>Smt. Sulochanadevi Singhania School, Thane</option>
+
+<option>Cathedral and John Connon School, Mumbai</option>
+
+<option>Vasant Valley School, Delhi</option>
+
+<option>Other Schools</option>
+
+</select>
+
+</td>
+</tr>
+<tr>
+<td colspan=3>
+<span id='s'></span>
+
+
+</td>
+</tr>
+<tr>
+<td class='legend'>
+Password* :
+</td>
+<td>
+<input type='password' name='pwd' class='i'>
+
+</td>
+<td>
+<span id='p'></span>
+
+</td>
+
+</tr>
+<tr>
+<td class='legend'>
+Confirm Password* :
+</td>
+<td>
+<input type='password' name='cpwd' class='i'>
+
+</td>
+<td>
+<span id='c'></span>
+
+</td>
+</tr>
+
+
+<tr>
+<td class='legend'>
+Upload photo :
+</td>
+<td colspan=2>
+<input type='file' id='upload' name='upload'>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan=2>
+<span id='u'></span>
+</td>
+</tr>
+</table>
+
+<br><br>
+<input type='reset' value='Clear Form' id='reset'>&nbsp;
+<input type='button' value='Create Account' onclick='f()' id='s'>
+<br><br><br>
+* marked fields are mandatory fields.
+
+</form>
+
+</fieldset>
+</body>
+
+</html>
