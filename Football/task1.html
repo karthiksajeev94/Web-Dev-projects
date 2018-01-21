@@ -1,0 +1,81 @@
+
+<! doctype html>
+<html>
+<head>
+<title>Web Dev-task 1</title>
+
+<style>
+div { position:absolute; display: block; left:600px; top:350px;}
+body { background-color:green; color: white;}
+.head { font-family:harrington; text-align:center; color:yellow;}
+</style>
+
+</head>
+
+<body>
+<h1 class = "head">Web Development</h1>
+<hr>
+<br>
+<div id="id"><img src="football.jpg" height = 30px width = 30px></div>
+
+<form name = 'name'>					
+
+Choose speed range:					
+<select name = 'spd'>
+<option value = '1'>Very Slow</option>
+<option value = '2'>Slow</option>
+<option selected value = '3'>Medium</option>
+<option value = '4'>Fast</option>
+<option value = '5'>Very Fast</option>
+</select>
+
+<br><br><br>
+
+<input type = 'button' value = 'Start Animation!' onclick = choose()>
+
+</form>
+
+
+<script>
+<!--
+
+var n = 0;
+var speed = null;
+var obj = document.getElementById('id');
+var radius = 200;
+var ang = 3.1415;
+var f = 1;						 
+var g = 1;						
+
+
+function choose()					//function to determine speed and trajectory
+{
+circle();
+}
+		
+function circle()					//function to create circular motion
+{
+var s = document.name.spd.value;
+switch(s)
+	{
+	case '1':speed = 150;break;
+	case '2':speed = 30;break;
+	case '3':speed = 16;break;
+	case '4':speed = 10;break;
+	case '5':speed = 2;break;
+	}
+
+obj.style.left = Math.cos(ang)*radius + 800;		//instantaneous
+obj.style.top = Math.sin(ang)*radius + 350;		//coordinates
+ang+= 0.05;
+setTimeout(circle,speed);
+}
+
+
+
+//-->
+</script>
+
+</body>
+
+</html>
