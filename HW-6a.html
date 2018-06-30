@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+NEWS
+</title>
+<link rel="stylesheet" href="newsStyle.css">
+<script src="newsScript.js">
+</script>
+</head>
+<body>
+<div id="header">
+<h1 id="headerText"><center>NEWS</center></h1>
+</div>
+<div id="top">
+<p id="topText">Choose one of the following categories:</p>
+</div>
+<br>
+<div id="holder">
+<div class="cols" id="col1">
+<br><br>
+<a href="#" id="politics" onclick="polNews()" style="visibility:visible">Politics</a>
+<br>
+<a href="#" id="finance"  onclick="finNews()" style="visibility:visible">Finance</a>
+</div>
+<div class="cols" id="col2">
+<a href="#" id="national" onclick="natNews()" style="visibility:hidden">National</a>
+<br>
+<a href="#" id="international" onclick="intNews()" style="visibility:hidden">International</a>
+<br>
+<a href="#" id="sector" onclick="secNews()" style="visibility:hidden">Sector</a>
+<br>
+<a href="#" id="stock" onclick="stkNews()" style="visibility:hidden">Stock</a>
+</div>
+<div class="cols" id="col3">
+<a id="aapl" target="_blank" style="visibility:hidden">Apple</a>
+<a id="goog" target="_blank" style="visibility:hidden">Google</a>
+<a id="msft" target="_blank" style="visibility:hidden">Microsoft</a>
+</div>
+
+</div>
+</body>
+</html>
